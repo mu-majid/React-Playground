@@ -8,9 +8,13 @@ class VideoItem extends React.Component {
 
 
   render () {
-    const { title, publishedAt, thumbnails } = this.props.video;
+    const { title, thumbnails } = this.props.video;
+    const videoId = this.props.videoId;
     return (
-      <div ref={this.vidRef} className="video-item item" onClick={() => this.props.onVideoSelect(this.props.video)}>
+      <div 
+        ref={this.vidRef} 
+        className="video-item item" 
+        onClick={() => this.props.onVideoSelect(Object.assign({videoId}, this.props.video))}>
         
         <img
           alt={title}
