@@ -5,7 +5,22 @@ const WIKIPEDIA_BASE_URL = 'https://en.wikipedia.org/w/api.php';
 
 const Search = () => {
   const [term, setTerm] = useState('programming');
+  const [debouncedTerm, setDebouncedTerm] = useState(term);
   const [results, setResults] = useState([]);
+
+  // watch term, and update debouncedTerm after a DEBOUNCE 500ms.
+  useEffect(() => {
+
+    // throttling update, so we delay debouncedTerm update, hence delaying the request when user stop typing for some time
+    const timerId = setTimeout(() => {
+      setDebouncedTerm(term);
+    }, 500);
+
+    // cancel previous timed update for `debounedTerm`
+    return () => {
+      clearTimeout(timerId);
+    }
+  }, [term]);
 
   useEffect(() => {
 
@@ -16,26 +31,15 @@ const Search = () => {
           list: 'search',
           origin: '*',
           format: 'json',
-          srsearch: term
+          srsearch: debouncedTerm
         }
       });
 
       setResults(data.query.search);
     }
-    
-    // throttle, when we do search
-    const timeOutId = setTimeout(() => {
-      if (term) {
-        search();
-      }
-    }, 750);
+    search();
 
-    // cleanup function
-    return () => {
-      clearTimeout(timeOutId);
-    }
-
-  }, [term]);
+  }, [debouncedTerm]);
 
   const redneredResults = results.map((result) => {
     return (
