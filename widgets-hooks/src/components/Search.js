@@ -8,6 +8,9 @@ const Search = () => {
   const [debouncedTerm, setDebouncedTerm] = useState(term);
   const [results, setResults] = useState([]);
 
+  // we did not search in the onChange handler, to decouple the search API call trigger from that specifc event
+  // Maybe we select a category after writing term or whatever. 
+
   // watch term, and update debouncedTerm after a DEBOUNCE 500ms.
   useEffect(() => {
 

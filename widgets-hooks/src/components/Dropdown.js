@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 // addEventListener get handled first, then React events (onClick for example)
 // events get handled from most inner child to parent
 
-const DropDown = ({ options, selected, onSelectChange }) => {
+const DropDown = ({ options, selected, onSelectChange, label }) => {
 
   const [open, setOpen] = useState(false);
   const ref = useRef();
@@ -47,12 +47,12 @@ const DropDown = ({ options, selected, onSelectChange }) => {
   return (
     <div ref={ref} className="ui form">
       <div className="field">
-        <label className="label">Select a Color</label>
-        <br></br>
-        <div>
+        <label className="label">{label}</label>
+        {/* <br></br> */}
+        {/* <div>
           <label>You Selected Color with value of {selected.value}</label>
-        </div>
-        <br></br>
+        </div> */}
+        {/* <br></br> */}
         <div
           onClick={() => setOpen(!open)}
           className={`ui selection dropdown ${open ? 'visible active' : ''}`}
