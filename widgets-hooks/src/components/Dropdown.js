@@ -29,6 +29,7 @@ const DropDown = ({ options, selected, onSelectChange }) => {
   }, []); // only run once, when the component first renders
 
   const renderedOptions = options.map(opt => {
+    // remove selected from list
     if (opt.value === selected.value) {
       return null;
     }
@@ -47,6 +48,11 @@ const DropDown = ({ options, selected, onSelectChange }) => {
     <div ref={ref} className="ui form">
       <div className="field">
         <label className="label">Select a Color</label>
+        <br></br>
+        <div>
+          <label>You Selected Color with value of {selected.value}</label>
+        </div>
+        <br></br>
         <div
           onClick={() => setOpen(!open)}
           className={`ui selection dropdown ${open ? 'visible active' : ''}`}
