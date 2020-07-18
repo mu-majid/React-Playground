@@ -1,40 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import SearchBar from './SearchBar';
-import youtube from '../apis/youtube';
 import VideosList from './VideosList';
 import VideoDetail from './VideoDetail';
+import useVideos from '../hooks/useVideos';
 
-const KEY = 'AIzaSyAWZgrYucQxjZDaZpbkug3Wx5JQazMWH6I';
 
 const App = () => {
-  const [vids, setVids] = useState([]);
   const [selected, setSelected] = useState(null);
+  const [vids, searchFor] = useVideos('buildings');
+  console.log(vids);
 
-  // run only one time when the component first renders
   useEffect(() => {
-    onSearchSumbit('buildings');
-  }, []);
+    const defaultVideo = vids[0];
+    if (defaultVideo) {
+      setSelected(Object.assign({ videoId: defaultVideo.id.videoId }, defaultVideo.snippet));
 
-  const onSearchSumbit = async (term) => {
-    const { data } = await youtube.get('/search', {
-      params: {
-        q: term,
-        part: "snippet",
-        maxResults: 5,
-        key: KEY,
-        type: 'video'
-      }
-    });
-    const defaultVideo = data.items[0];
-
-    setVids(data.items);
-    setSelected(Object.assign({videoId: defaultVideo.id.videoId}, defaultVideo.snippet));
-  }
-
+    }
+  }, [vids]);
 
   return (
     <div className="ui container">
-      <SearchBar searchCB={onSearchSumbit} />
+      <SearchBar searchCB={searchFor} />
       <div className="ui grid">
         <div className="ui row">
           <div className="eleven wide column">
