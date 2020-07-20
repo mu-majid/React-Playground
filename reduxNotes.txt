@@ -1,0 +1,8 @@
+- Redux library is not built/designed for react specifically.
+- redux Cycle: 
+  Action Creator -> Action -> dispatch -> reducers -> state
+  submit fomr -> the form -> form recv. -> depts. in Co -> dept data
+
+always inside a reducer return new instance of whatever is getting updated.
+
+Redux store is just a place to group a bunch of reducers and ActionCreators
