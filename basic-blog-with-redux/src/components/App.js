@@ -1,9 +1,11 @@
 import React from 'react';
-
+import PostsList from './PostsList';
 
 const App = () => {
   return (
-    <div className="ui contanier"> APP </div>
+    <div className="ui contanier">
+      <PostsList />
+    </div>
   )
 }
 
