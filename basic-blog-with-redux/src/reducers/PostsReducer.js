@@ -5,6 +5,12 @@
 
 // 4. Don't mutate the first argument (actually you can
 // , but watch out for a corner case, so you avoid re-rendering unnecessarily, or missing re-renders (if mutated old state and returned it))
-export default () => {
-  return [];
+export default (state = [], action) => {
+  switch (action.type) {
+    case 'FETCH_POSTS':
+      return action.payload;
+  
+    default:
+      return state;
+  }
 }
