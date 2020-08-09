@@ -1,40 +1,31 @@
 import React from 'react';
-import { BrowserRouter, Route, Link } from 'react-router-dom';
-
+import { BrowserRouter, Route } from 'react-router-dom';
+import StreamCreate from './streams/StreamCreate';
+import StreamDelete from './streams/StreamDelete';
+import StreamEdit from './streams//StreamEdit';
+import StreamList from './streams/StreamList';
+import StreamShow from './streams/StreamShow';
+import Header from './Header';
 
 // <a> causes full page(App) reload and all redux data are wiped out.
-const pageOne = () => {
-  return  (
-    <div>
-      Page pageOne
-      BAD NAVIGATION
-      <Link to="/pagetwo" >Navigate to page two</Link>
-    </div>
-  );
-}
+// Note there are other router like HashRouter, MemoryRouter, and browserRouter (depend on server the app is deployed on).
+// (most servers=> check resources, then check public dir, if no route return 404, but react dev server return index.html)
 
-const pageTwo = () => {
-  return  (
-    <div>
-      Page pageTwo
-      BAD NAVIGATION
 
-      <Link to="/" >Navigate to page one</Link>
-    </div>
-  );
-}
-
-// Note there are other router like HashRouter, MemoryRouter, and browserRouter
 
 const App = (props) => {
   return (
-    <div>
+    <div className="ui container">
       {/* BrowserRouter uses History object inernally to know what path we are viweing now */}
       <BrowserRouter>
         <div>
-          <Route path="/" exact component={pageOne}></Route>
-          <Route path="/pageTwo" exact component={pageTwo}></Route>
-          
+          <Header />
+
+          <Route path="/" exact component={StreamList}></Route>
+          <Route path="/streams/new" exact component={StreamCreate}></Route>
+          <Route path="/streams/edit" exact component={StreamEdit}></Route>
+          <Route path="/streams/delete" exact component={StreamDelete}></Route>
+          <Route path="/streams/show" exact component={StreamShow}></Route>
         </div>
       </BrowserRouter>
     </div>
