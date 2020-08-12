@@ -25,6 +25,7 @@ class GoogleAuth extends React.Component {
     if (this.state.isSignedIn === null) {
       return null; // could be spinner
     }
+    // TODO: Add Buttons functionality
     else if (this.state.isSignedIn) {
       return (
         <button className="ui red google button" >
