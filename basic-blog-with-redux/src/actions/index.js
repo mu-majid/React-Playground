@@ -30,7 +30,7 @@ export const fetchUser = id => async dispatch => {
 // downside of memoization : a user is fetched only one time in our app,
 // and if he's updated we need to write the same exact code but without memoize fn.
 
-// export const fetchUser = (id) => async (dispatch, ) => {
+// export const fetchUser = (id) => async (dispatch ) => {
 //   _fetchUser(id, dispatch);
 // };
 
