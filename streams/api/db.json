@@ -9,6 +9,12 @@
       "title": "hello",
       "description": "julia",
       "id": 2
+    },
+    {
+      "title": "This is a stream",
+      "description": "Hello there, this is my new stream!",
+      "userId": "106854898964211933184",
+      "id": 3
     }
   ]
 }
