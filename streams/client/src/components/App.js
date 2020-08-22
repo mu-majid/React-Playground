@@ -1,11 +1,12 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { Router, Route } from 'react-router-dom';
 import StreamCreate from './streams/StreamCreate';
 import StreamDelete from './streams/StreamDelete';
 import StreamEdit from './streams//StreamEdit';
 import StreamList from './streams/StreamList';
 import StreamShow from './streams/StreamShow';
 import Header from './Header';
+import history from '../history';
 
 // <a> causes full page(App) reload and all redux data are wiped out.
 // Note there are other router like HashRouter, MemoryRouter, and browserRouter (depend on server the app is deployed on).
@@ -17,7 +18,7 @@ const App = (props) => {
   return (
     <div className="ui container">
       {/* BrowserRouter uses History object inernally to know what path we are viweing now */}
-      <BrowserRouter>
+      <Router history={history}>
         <div>
           <Header />
 
@@ -27,7 +28,7 @@ const App = (props) => {
           <Route path="/streams/delete" exact component={StreamDelete}></Route>
           <Route path="/streams/show" exact component={StreamShow}></Route>
         </div>
-      </BrowserRouter>
+      </Router>
     </div>
   )
 }
