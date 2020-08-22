@@ -1,9 +1,14 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 const StreamEdit = (props) => {
   return (
-    <div>StreamEdit {props.match.params.id} </div>
+    <div>StreamEdit {JSON.stringify(props)} </div>
   )
 }
 
-export default StreamEdit;
+const mapStateToProps = (state, ownProps) => {
+  return { stream: state.streams[ownProps.match.params.id] };
+}
+
+export default connect(mapStateToProps)(StreamEdit);
