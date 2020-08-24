@@ -35,9 +35,11 @@ export const fetchStream = id => async dispatch => {
 }
 
 export const editStream = (id, formValues) => async dispatch => {
-  const { data } = await streams.put(`/streams/${id}`, formValues);
+  const { data } = await streams.patch(`/streams/${id}`, formValues); // put update ALL, but patch update SOME props!!
 
   dispatch({ type: 'EDIT_STREAM', payload: data });
+  history.push('/');
+
 }
 
 export const deleteStream = (id) => async dispatch => {

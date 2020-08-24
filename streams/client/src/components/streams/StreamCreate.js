@@ -1,33 +1,8 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
-import { createStream } from '../../Actions'
-
+import StreamForm from './StreamForm';
+import { createStream } from '../../Actions';
 class StreamCreate extends React.Component {
-
-  renderError = ({ error, touched }) => {
-    if (error && touched) {
-      return (
-        <div className="ui error message">
-          <div className="header">
-            {error}
-          </div>
-        </div>
-      );
-    }
-
-  }
-
-  renderInput = ({ input, label, meta }) => {
-    const fiedlClassName = `field ${meta.error && meta.touched ? 'error' : ''}`;
-    return (
-      <div className={fiedlClassName} >
-        <label>{label}</label>
-        <input {...input} />
-        {this.renderError(meta)}
-      </div>
-    )
-  }
 
   onSubmit = (formValues) => { // fromValues are passed by redux-form
     this.props.createStream(formValues);
@@ -35,28 +10,14 @@ class StreamCreate extends React.Component {
 
   render () {
     return (
-      <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form error">
-        <Field name="title" component={this.renderInput} label="Enter Stream Title" />
-        <Field name="description" component={this.renderInput} label="Enter Stream Description" />
-        <button className="ui button primary" >Submit</button>
-      </form>
+      <div>
+        <h3>Create a Stream</h3>
+        <StreamForm onSubmit={this.onSubmit} />
+      </div>
     )
   }
 }
 
-const validate = (formValues) => {
 
-  const errors = {};
-  if (!formValues.title) {
-    errors.title = 'You Must Enter A Stream Title.';
-  }
 
-  if (!formValues.description) {
-    errors.description = 'You Must Enter A Stream Description.';
-  }
-
-  return errors;
-}
-
-const wrappedForm = reduxForm({ form: 'create_stream_form', validate })(StreamCreate);
-export default connect(null, { createStream })(wrappedForm);
+export default connect(null, { createStream })(StreamCreate);
