@@ -1,15 +1,6 @@
 {
   "streams": [
-    {
-      "title": "hello",
-      "description": "julia",
-      "id": 1
-    },
-    {
-      "title": "hello",
-      "description": "julia",
-      "id": 2
-    },
+
     {
       "title": "This is a stream",
       "description": "Hello there, this is my new stream!",
@@ -27,11 +18,6 @@
       "description": "logging form values before action creator",
       "userId": "106854898964211933184",
       "id": 5
-    },
-    {
-      "title": "new stream edited",
-      "description": "Creaed after refactor, edited after refactor",
-      "id": 7
     }
   ]
 }
