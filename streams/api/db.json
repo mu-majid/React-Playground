@@ -29,12 +29,6 @@
       "id": 5
     },
     {
-      "title": "new title",
-      "description": "this was done during openeing redux devtools, edited by patch",
-      "userId": "106854898964211933184",
-      "id": 6
-    },
-    {
       "title": "new stream edited",
       "description": "Creaed after refactor, edited after refactor",
       "id": 7
