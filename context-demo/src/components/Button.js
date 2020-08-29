@@ -1,6 +1,9 @@
 import React from 'react';
+import LangContext from '../context/langContext';
 
 class Button extends React.Component {
+
+  static contextType = LangContext;
 
   render () {
     return (
