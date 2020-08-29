@@ -5,10 +5,11 @@ import langContext from '../context/langContext';
 class Button extends React.Component {
 
   // only used when context is needed from `this.context` (not needed with consumer)
-  static contextType = LangContext;
+  // static contextType = LangContext;
+
+  // Consumer is used when multiple contexts are consumed by same component
 
   render() {
-    const text = this.context === 'en' ? 'Submit' : 'Voorleggen';
     return (
       <button className="ui button primary" >
         <langContext.Consumer>
