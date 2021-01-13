@@ -14,7 +14,8 @@ const DropDown = ({ options, selected, onSelectChange, label }) => {
 
     const onBodyClick = (event) => {
       // if click event is from react component, then don't run this body event manual handler
-      if (ref.current.contains(event.target)) {
+      // React v17 update on handlin events
+      if (ref.current && ref.current.contains(event.target)) {
         return;
       }
       setOpen(false);
