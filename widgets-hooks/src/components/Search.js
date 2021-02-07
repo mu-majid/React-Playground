@@ -79,7 +79,7 @@ const Search = () => {
       </div>
       <div className="ui celled list">{redneredResults}</div>
     </div>
-  )
+  );
 }
 
 export default Search;
